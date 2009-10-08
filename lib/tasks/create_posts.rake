@@ -3,8 +3,8 @@ namespace :db do
   task :fill => :environment do
     require 'twitter'
     
-    Twitter::Search.new('ruby rails').per_page(200).each do |r|
-      Post.create(:title => "A thoughtful post from @#{r.from_user}", :body => r.text, :published => true)
+    Twitter::Search.new('cardinals baseball').per_page(20).each do |r|
+      Post.create(:title => "post from @#{r.from_user}", :body => r.text, :published => true)
     end
   end
 end

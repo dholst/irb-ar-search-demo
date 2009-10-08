@@ -1,15 +1,16 @@
 <% form_tag posts_path, :method => :get do %>
-<table>
+  <table>
     <tr><td>Simple:</td><td><input type="text" name="search_by_simple"></td></tr>
     <tr><td>Less Simple:</td><td><input type="text" name="search_by_less_simple"></td></tr>
     <tr><td>Scoped Search Gem:</td><td><input type="text" name="search_by_scoped_search_gem"></td></tr>
     <tr><td>Sphinx:</td><td><input type="text" name="search_by_sphinx"></td></tr>
-</table>
-<br>
-<%= submit_tag 'Search' %>
+  </table>
+  <p>
+    <%= submit_tag 'Search' %>
+  </p>
 <% end %>
 
-<h1>Listing posts</h1>
+<hr>
 
 <table>
   <tr>
@@ -18,18 +19,15 @@
     <th>Published</th>
   </tr>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%=h post.title %></td>
-    <td><%=h post.body %></td>
-    <td><%=h post.published %></td>
-    <td><%= link_to 'Show', post_path(post) %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post_path(post), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%=h post.title %></td>
+      <td><%=h post.body %></td>
+      <td><%=h post.published %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New post', new_post_path %>
+<p> 
+  <%= will_paginate @posts if @posts.respond_to? :total_pages %>
+</p>

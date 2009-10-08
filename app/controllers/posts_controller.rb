@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = find_posts
+    @posts = find_posts || Post.paginate(:page => params[:page], :per_page => 10)
+    
+    if(@posts.respond_to? :run)
+      @search = @posts
+      @posts = @search.run.results
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -88,10 +93,10 @@ class PostsController < ApplicationController
   def find_posts
     params.each do |param|
       if(param.first =~ /search_by/ && !param.second.empty?)
-        return "post_#{param.first}".camelize.constantize.search_for(param.second)
+        return "post_#{param.first}".camelize.constantize.published.search({'query' => param.second}.merge(params))
       end
     end
     
-    Post.all
+    nil
   end
 end

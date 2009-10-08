@@ -4,7 +4,7 @@ class PostSearchByLessSimple < Post
   
   searchable_by :title, :body
   
-  def self.search_for(query)
-    search_less_simple(query)
+  def self.search(params)
+    search_less_simple(params)
   end
 end

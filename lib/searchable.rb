@@ -6,9 +6,9 @@ module Searchable
     end
   end
 
-  def search_less_simple(query, fields=nil, options={}) 
-    with_scope :find => {:conditions => search_conditions(query, fields) } do 
-      find :all, options
+  def search_less_simple(params)
+    with_scope :find => {:conditions => search_conditions(params['query'])} do 
+      paginate :page => params['page'], :per_page => params['per_page'] || 10
     end 
   end
   
