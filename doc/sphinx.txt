@@ -1,0 +1,16 @@
+curl -O http://www.sphinxsearch.com/downloads/sphinx-0.9.8.1.tar.gz
+tar -xvzf sphinx-0.9.8.1.tar.gz
+cd sphinx-0.9.8.1
+./configure && make && sudo make install
+
+script/plugin install git://github.com/mojombo/chronic.git
+script/plugin install git://github.com/fauna/ultrasphinx.git
+
+indexed_on
+
+mkdir config/ultrasphinx
+cp vendor/plugins/ultrasphinx/examples/default.base config/ultrasphinx/
+
+rake ultrasphinx:configure
+rake ultrasphinx:index
+rake ultrasphinx:daemon:start
