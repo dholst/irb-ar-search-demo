@@ -1,4 +1,4 @@
-class PostSearchBySql < Post
+class PostSearchBySimple < Post
   set_table_name 'posts'
   set_inheritance_column nil
   

@@ -1,0 +1,25 @@
+# rake spec will try to run the integration specs on all the following 
+# database connections to test the different adapters.
+#
+# The syntax of this file is similar to the database.yml file in a
+# Rails application. You can change these parameters to your setup,
+# or comment them out if you have no such database connections available
+# to you.
+
+sqlite3:
+  adapter: "sqlite3"
+  database: ":memory:"
+
+mysql:
+  adapter: "mysql"
+  host: "localhost"
+  user: "root"
+  password:
+  database: "scoped_search_test"
+ 
+postgresql:
+  adapter: "postgresql"
+  host: "localhost"
+  username: "scoped_search"
+  password: "scoped_search"
+  database: "scoped_search_test"

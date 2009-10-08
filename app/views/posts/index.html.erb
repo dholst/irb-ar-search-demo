@@ -1,7 +1,9 @@
 <% form_tag posts_path, :method => :get do %>
 <table>
-    <tr><td>Sql search:</td><td><input type="text" name="search_by_sql"></td></tr>
-    <tr><td>Sphinx search:</td><td><input type="text" name="search_by_sphinx"></td></tr>
+    <tr><td>Simple:</td><td><input type="text" name="search_by_simple"></td></tr>
+    <tr><td>Less Simple:</td><td><input type="text" name="search_by_less_simple"></td></tr>
+    <tr><td>Scoped Search Gem:</td><td><input type="text" name="search_by_scoped_search_gem"></td></tr>
+    <tr><td>Sphinx:</td><td><input type="text" name="search_by_sphinx"></td></tr>
 </table>
 <br>
 <%= submit_tag 'Search' %>
