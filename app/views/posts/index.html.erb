@@ -1,9 +1,21 @@
 <% form_tag posts_path, :method => :get do %>
   <table>
-    <tr><td>Simple:</td><td><input type="text" name="search_by_simple"></td></tr>
-    <tr><td>Less Simple:</td><td><input type="text" name="search_by_less_simple"></td></tr>
-    <tr><td>Scoped Search Gem:</td><td><input type="text" name="search_by_scoped_search_gem"></td></tr>
-    <tr><td>Sphinx:</td><td><input type="text" name="search_by_sphinx"></td></tr>
+    <tr>
+        <td>Simple:</td>
+        <td><input type="text" name="search_by_simple"></td>
+    </tr>
+    <tr>
+        <td>Less Simple:</td>
+        <td><input type="text" name="search_by_less_simple"></td>
+    </tr>
+    <tr>
+        <td>Scoped Search Gem:</td>
+        <td><input type="text" name="search_by_scoped_search_gem"></td>
+    </tr>
+    <tr>
+        <td>Sphinx:</td>
+        <td><input type="text" name="search_by_sphinx"></td>
+    </tr>
   </table>
   <p>
     <%= submit_tag 'Search' %>
@@ -29,5 +41,6 @@
 </table>
 
 <p> 
+  <%= will_paginate @search if @search %>
   <%= will_paginate @posts if @posts.respond_to? :total_pages %>
 </p>

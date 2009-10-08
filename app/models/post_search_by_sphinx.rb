@@ -8,6 +8,8 @@ class PostSearchBySphinx < Post
   ]
   
   def self.search(params)
-    Ultrasphinx::Search.new(params.merge({:filters => {'published' => 1}}))
+    params['per_page'] ||= 10
+    params['filters'] = {'published' => 1}
+    Ultrasphinx::Search.new(params)
   end
 end
